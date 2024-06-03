@@ -23,11 +23,8 @@ export default function ListPokemon() {
     getAllPokemon();
   }, []);
 
-
   return (
-    <div>
-      <h1>Pokemon</h1>
-
+    <div className="pokemonList">
       {pokemon ? (
         pokemon.map((pokemon) => (
           <div key={pokemon.id}>

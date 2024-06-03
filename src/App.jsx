@@ -7,12 +7,9 @@ import MyParty from "./pages/MyParty";
 import PokemonDetails from "./pages/PokemonDetails";
 import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
-import { useState } from "react";
-import { useEffect } from "react";
+import Footer from "./components/Footer";
 
 function App() {
-
-
   return (
     <div className="App">
       <Navbar />
@@ -24,6 +21,7 @@ function App() {
         <Route path="About" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

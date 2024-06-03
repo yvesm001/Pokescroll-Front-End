@@ -40,7 +40,12 @@ function PokemonDetails() {
 
           {currentPokemon.type.map((type) => {
             return (
-              <p key={type} id={type.toLowerCase()}>
+              <p className="rounded-pill"
+                    style={{
+                      color: "white",
+                      padding: "8px",
+                      display: "flex",
+                    }} key={type} id={type.toLowerCase()}>
                 {type}
               </p>
             );

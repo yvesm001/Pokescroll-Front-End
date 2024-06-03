@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutPage() {
   return (
-    <div>
+    <div className="about-page">
       <h1>About</h1>
       <h2>Welcome to the Generation 1 Pokédex!</h2>
       <p>
