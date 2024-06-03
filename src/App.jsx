@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -8,9 +7,11 @@ import MyParty from "./pages/MyParty";
 import PokemonDetails from "./pages/PokemonDetails";
 import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+
 
   return (
     <div className="App">

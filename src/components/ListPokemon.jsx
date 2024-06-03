@@ -23,6 +23,7 @@ export default function ListPokemon() {
     getAllPokemon();
   }, []);
 
+
   return (
     <div>
       <h1>Pokemon</h1>
