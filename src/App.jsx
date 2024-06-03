@@ -8,6 +8,7 @@ import MyParty from "./pages/MyParty";
 import PokemonDetails from "./pages/PokemonDetails";
 import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
+import Footer from "./components/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +24,7 @@ function App() {
         <Route path="About" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

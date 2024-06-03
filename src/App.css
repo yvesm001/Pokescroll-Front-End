@@ -1,0 +1,96 @@
+body {
+  background-color: #eee5d7 !important;
+  font-family: "Pixelify Sans", sans-serif !important;
+}
+/* Pokemon Type by Color */
+#fire {
+  background-color: red !important;
+}
+
+#grass {
+  background-color: green !important;
+}
+
+#poison {
+  background-color: blueviolet !important;
+}
+
+#water {
+  background-color: blue !important;
+}
+
+#electric {
+  background-color: #dada17e4 !important;
+  color: #000 !important;
+}
+
+#ground {
+  background-color: brown !important;
+}
+
+#normal {
+  background-color: grey !important;
+}
+
+#flying {
+  background-color: #92b1c6 !important;
+}
+
+#bug {
+  background-color: olive !important;
+}
+
+#dark {
+  background-color: darkgray !important;
+}
+
+#fighting {
+  background-color: #ee6037 !important;
+}
+
+#psychic {
+  background-color: #f71b90 !important;
+}
+
+#rock {
+  background-color: #8a3d20 !important;
+}
+
+#steel {
+  background-color: #41bc93 !important;
+}
+
+#ice {
+  background-color: #85d1f4 !important;
+}
+
+#dragon {
+  background-color: #438a94 !important;
+}
+/* //////////// */
+
+/* Logo */
+.logo {
+  display: flex !important;
+  justify-content: center !important;
+}
+/* //////////// */
+/* Pokemon Card */
+.pokemonList {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+  gap: 20px !important;
+}
+
+.card {
+  background-color: #ecdcc5 !important;
+}
+.card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
