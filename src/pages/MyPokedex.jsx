@@ -39,8 +39,8 @@ const MyPokedex = () => {
   return (
     <div>
       <NewPokedexEntry onAdd={handleAddPokemon} />
-
-      <div className="pokedex">
+      <h1>My Pokédex</h1>
+      <div className="pokemonList">
         {pokemon ? (
           pokemon.map((pokemon) => (
             <div key={pokemon.id} className="pokemon-entry">
