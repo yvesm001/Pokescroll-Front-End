@@ -8,11 +8,16 @@ import { useNavigate } from "react-router-dom";
 const MyPokedex = () => {
   const [pokemon, setPokemon] = useState([]);
   const [party, setParty] = useState([]);
+  const [messages, setMessages] = useState({});
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
+  const playNotification = () => {
+    const audio = new Audio("/pokemonSound.wav");
+    audio.play();
+  };
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -50,6 +55,7 @@ const MyPokedex = () => {
       setPokemon((prevPokemon) =>
         prevPokemon.filter((pokemon) => pokemon.id !== id)
       );
+      playNotification();
     } catch (error) {
       console.log(error);
     }
@@ -57,11 +63,11 @@ const MyPokedex = () => {
 
   const handleAddToParty = async (pokemon) => {
     if (party.length >= 6) {
-      setModalMessage(
-        "Your party is full! Remove a Pokémon before adding another."
-      );
-      setIsError(true);
-      setModalIsOpen(true);
+      setMessages((prevMessages) => ({
+        ...prevMessages,
+        [pokemon.id]:
+          "Your party is full! Remove a Pokémon before adding another.",
+      }));
       return;
     }
 
@@ -76,9 +82,13 @@ const MyPokedex = () => {
       setModalMessage(`${pokemon.name} was added to your party!`);
       setIsError(false);
       setModalIsOpen(true);
+      playNotification();
       setTimeout(() => {
-        setModalIsOpen(false);
-      }, 1000);
+        setMessages((prevMessages) => ({
+          ...prevMessages,
+          [pokemon.id]: "",
+        }));
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -89,9 +99,18 @@ const MyPokedex = () => {
   };
 
   return (
-    <div>
-      <NewPokedexEntry onAdd={handleAddPokemon} />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "3rem",
+        gap: "20px",
+      }}
+    >
       <h1>My Pokédex</h1>
+      <NewPokedexEntry onAdd={handleAddPokemon} />
       <div className="pokemonList">
         {pokemon.length ? (
           pokemon.map((pokemon) => (

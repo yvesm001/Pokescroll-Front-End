@@ -19,15 +19,6 @@ function HomePage() {
           width: "30%",
         }}
       />
-      {/* <h1
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "2rem",
-        }}
-      >
-        Pokemon
-      </h1> */}
       <ListPokemon />
     </div>
   );

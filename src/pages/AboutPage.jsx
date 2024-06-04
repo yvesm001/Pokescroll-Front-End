@@ -3,7 +3,7 @@ import React from "react";
 function AboutPage() {
   return (
     <div
-      className="container about-page"
+      className=" card container about-page"
       style={{
         border: "4px solid #413016",
         display: "flex",
@@ -11,8 +11,6 @@ function AboutPage() {
         alignItems: "center",
         flexDirection: "column",
         marginTop: "3rem",
-        width: "55%",
-        height: "67vh",
       }}
     >
       <h1>About Us</h1>

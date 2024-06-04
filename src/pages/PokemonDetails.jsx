@@ -12,9 +12,15 @@ function PokemonDetails() {
   const { pokemonId } = useParams();
   const [currentPokemon, setCurrentPokemon] = useState(null);
 
+  const playNotification = () => {
+    const audio = new Audio("/pokemonSound.wav");
+    audio.play();
+  };
+
   const navigate = useNavigate();
 
   const getCurrentPokemon = async () => {
+    playNotification();
     try {
       const response = await axios.get(`${API_URL}/${pokemonId}`);
       setCurrentPokemon(response.data);

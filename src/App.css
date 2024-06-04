@@ -99,25 +99,24 @@ body {
 /* New Pokedex Entry */
 
 .new-pokedex-entry {
-  position: relative;
-  width: 300px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.new-pokedex-entry input {
+/* .new-pokedex-entry input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-}
+} */
 
 .new-pokedex-entry button {
-  margin-top: 8px;
+  margin-left: 10px;
 }
 
 .suggestions-list {
   top: 100%;
   width: 100%;
   background: white;
-  border: 1px solid #ccc;
   border-top: none;
   z-index: 1000;
   list-style-type: none;
@@ -126,23 +125,23 @@ body {
 }
 
 .suggestions-list li {
-  padding: 8px;
+  /* padding: 8px; */
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  list-style-type: none;
 }
 
 .suggestions-list li:hover {
   background-color: #ecdcc5;
 }
 
-
 /* MY PARTY*/
 .pokemon-entry {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
+  width: 45vw;
 }
 
 .pokemon-info {
@@ -174,12 +173,13 @@ body {
   text-align: left;
 }
 
-
 /* Pokeball that is next to each party pokemon */
- .party-ball {
-width: 75px;
-} 
-
+.party-ball {
+  width: 75px;
+}
+.party-ball {
+  width: 75px;
+}
 
 .Modal {
   position: fixed;
@@ -192,7 +192,7 @@ width: 75px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px; 
+  width: 300px;
   height: auto;
   text-align: center;
 }
@@ -208,8 +208,6 @@ width: 75px;
 
 .success-modal {
   top: 5%;
- 
-  
 }
 
 .error-modal {

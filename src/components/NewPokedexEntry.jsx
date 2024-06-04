@@ -8,6 +8,11 @@ const NewPokedexEntry = ({ onAdd }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
 
+  const playNotification = () => {
+    const audio = new Audio("/pokemonSound.wav");
+    audio.play();
+  };
+
   useEffect(() => {
     const fetchPokemonData = async () => {
       try {
@@ -31,7 +36,7 @@ const NewPokedexEntry = ({ onAdd }) => {
       const matchedPokemon = pokemonData.find(
         (pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
       );
-
+      playNotification();
       if (matchedPokemon) {
         const postResponse = await axios.post(
           "https://pokemon-data.adaptable.app/pokedex",
@@ -85,9 +90,15 @@ const NewPokedexEntry = ({ onAdd }) => {
                 <li
                   key={index}
                   onClick={() => handleSuggestionClick(suggestion)}
+                  style={{
+                    border: "1px solid black",
+                  }}
                 >
                   #{suggestion.id} {suggestion.name}{" "}
-                  <img src={suggestion.official_artwork} />
+                  <img
+                    src={suggestion.official_artwork}
+                    style={{ height: "10vh" }}
+                  />
                 </li>
               ))}
             </ul>
@@ -100,5 +111,3 @@ const NewPokedexEntry = ({ onAdd }) => {
 };
 
 export default NewPokedexEntry;
-
-
