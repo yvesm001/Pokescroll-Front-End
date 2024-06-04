@@ -29,73 +29,110 @@ function PokemonDetails() {
 
   return (
     <div>
-      <h1>Pokemon Details</h1>
+      <h1
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Pokemon Details
+      </h1>
 
       {currentPokemon ? (
-        <div>
-          <img src={currentPokemon.official_artwork} />
-          <p>#{currentPokemon.id}</p>
-          <h3>{currentPokemon.name}</h3>
-          <p>{currentPokemon.category}</p>
-
-          {currentPokemon.type.map((type) => {
-            return (
-              <p className="rounded-pill"
+        <div
+          className="card"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ width: "15rem" }}
+            src={currentPokemon.official_artwork}
+          />
+          <div className="card-body">
+            <h3>#{currentPokemon.id}</h3>
+            <h2>{currentPokemon.name}</h2>
+            <h4>{currentPokemon.category}</h4>
+            <span
+              className="name-type"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "10px",
+              }}
+            >
+              {currentPokemon.type.map((type) => {
+                return (
+                  <p
+                    className="rounded-pill"
                     style={{
                       color: "white",
                       padding: "8px",
                       display: "flex",
-                    }} key={type} id={type.toLowerCase()}>
-                {type}
-              </p>
-            );
-          })}
+                    }}
+                    key={type}
+                    id={type.toLowerCase()}
+                  >
+                    {type}
+                  </p>
+                );
+              })}
+            </span>
+            <h6>Heigth: {currentPokemon.height} m</h6>
+            <h6>Weigth: {currentPokemon.weight} kg</h6>
+            <h6>{currentPokemon.description}</h6>
+            <br></br>
+            <h6>
+              {" "}
+              Where to encounter:
+              {currentPokemon.encounter_areas.map((area) => {
+                return (
+                  <li key={area} id={area.toLowerCase()}>
+                    {area}
+                  </li>
+                );
+              })}
+            </h6>
+            <br></br>
+            <audio
+              style={{ marginBottom: "10px" }}
+              controls
+              src={currentPokemon.sound}
+            />
+            <br></br>
+            <div className="btnDetails">
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                {" "}
+                Back to Home{" "}
+              </button>
 
-          <p>{currentPokemon.height} m</p>
-          <p>{currentPokemon.weight} kg</p>
-          <p>{currentPokemon.description}</p>
+              <button
+                onClick={() => {
+                  navigate(`/PokemonDetails/${currentPokemon.id + 1}`);
+                }}
+              >
+                {" "}
+                Next Pokemon
+              </button>
 
-          <p>
-            {" "}
-            Where to encounter:
-            {currentPokemon.encounter_areas.map((area) => {
-              return (
-                <li key={area} id={area.toLowerCase()}>
-                  {area}
-                </li>
-              );
-            })}
-          </p>
-
-          <audio controls src={currentPokemon.sound} />
-
-          <button
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            {" "}
-            Back to Home{" "}
-          </button>
-
-          <button
-            onClick={() => {
-              navigate(`/PokemonDetails/${currentPokemon.id + 1}`);
-            }}
-          >
-            {" "}
-            Next Pokemon
-          </button>
-
-          <button
-            onClick={() => {
-              console.log(currentPokemon.name);
-            }}
-            type="button"
-            data-id={currentPokemon.id}
-          >
-            Add to Party{" "}
-          </button>
+              <button
+                onClick={() => {
+                  console.log(currentPokemon.name);
+                }}
+                type="button"
+                data-id={currentPokemon.id}
+              >
+                Add to Party{" "}
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <p>Catching 'em all...</p>

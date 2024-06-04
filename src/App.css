@@ -95,6 +95,46 @@ body {
   align-items: center !important;
 }
 
+/* //////////// */
+/* New Pokedex Entry */
+
+.new-pokedex-entry {
+  position: relative;
+  width: 300px;
+}
+
+.new-pokedex-entry input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.new-pokedex-entry button {
+  margin-top: 8px;
+}
+
+.suggestions-list {
+  top: 100%;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 1000;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggestions-list li:hover {
+  background-color: #ecdcc5;
+}
 
 /* //////////// */
 /* New Pokedex Entry */
