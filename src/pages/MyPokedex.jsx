@@ -36,22 +36,37 @@ const MyPokedex = () => {
     }
   };
 
+  const handleAddToParty = async (pokemon) => {
+    try {
+      const response = await axios.post(
+        "https://pokemon-data.adaptable.app/party",
+        pokemon
+      );
+      console.log("Added to party:", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NewPokedexEntry onAdd={handleAddPokemon} />
       <h1>My Pokédex</h1>
       <div className="pokemonList">
-        {pokemon ? (
+        {pokemon.length ? (
           pokemon.map((pokemon) => (
-            <div key={pokemon.id} className="pokemon-entry">
+            <div key={pokemon.id}>
               <PokemonCard pokemon={pokemon} />
               <button onClick={() => handleDeletePokemon(pokemon.id)}>
                 Delete
               </button>
+              <button onClick={() => handleAddToParty(pokemon)}>
+                Add to Party
+              </button>
             </div>
           ))
         ) : (
-          <p>No Pokémon</p>
+          <p>No Pokédex entries</p>
         )}
       </div>
     </div>
