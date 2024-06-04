@@ -40,13 +40,23 @@ function MyParty() {
   // }
 
   return (
-    <div>
-      <h1>My Party Page</h1>
-      <ul className="list-group">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <h1 style={{ margin: "3% " }}>My Party Page</h1>
+      <ul className="list-group" style={{ border: "4px solid #413016" }}>
         {party.length ? (
           party.map((pokemon) => (
             <li key={pokemon.id} className="list-group-item">
-              <div className="pokemon-entry">
+              <div
+                className="pokemon-entry"
+                style={{ border: "2px solid #413016" }}
+              >
                 <div className="pokemon-info">
                   <h3 className="pokemon-name">{pokemon.name}</h3>
                   <img
@@ -58,12 +68,19 @@ function MyParty() {
                 <ul className="move-list">
                   <h3>Moves</h3>
                   {pokemon.learnable_moves.slice(0, 4).map((move, index) => (
-                    <li key={index} className="move">
+                    <li
+                      key={index}
+                      className="move"
+                      style={{ paddingRight: "30px" }}
+                    >
                       {move}
                     </li>
                   ))}
                 </ul>
-                <div className="d-flex flex-column gap-1">
+                <div
+                  className="d-flex flex-column gap-1"
+                  style={{ paddingRight: "10px" }}
+                >
                   <button>Edit</button>
                   <button onClick={() => handleDeletePokemon(pokemon.id)}>
                     Delete

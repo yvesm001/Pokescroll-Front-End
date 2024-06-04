@@ -49,22 +49,30 @@ const MyPokedex = () => {
   };
 
   return (
-    <div>
-      <NewPokedexEntry onAdd={handleAddPokemon} />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "3rem",
+        gap: "20px",
+      }}
+    >
       <h1>My Pokédex</h1>
+      <NewPokedexEntry onAdd={handleAddPokemon} />
       <div className="pokemonList">
         {pokemon.length ? (
           pokemon.map((pokemon) => (
             <div key={pokemon.id}>
-            
               <PokemonCard pokemon={pokemon} />
               <div className="d-flex justify-content-center gap-1">
-              <button onClick={() => handleDeletePokemon(pokemon.id)}>
-                Delete
-              </button>
-              <button onClick={() => handleAddToParty(pokemon)}>
-                Add to Party
-              </button>
+                <button onClick={() => handleDeletePokemon(pokemon.id)}>
+                  Delete
+                </button>
+                <button onClick={() => handleAddToParty(pokemon)}>
+                  Add to Party
+                </button>
               </div>
             </div>
           ))

@@ -85,9 +85,15 @@ const NewPokedexEntry = ({ onAdd }) => {
                 <li
                   key={index}
                   onClick={() => handleSuggestionClick(suggestion)}
+                  style={{
+                    border: "1px solid black",
+                  }}
                 >
                   #{suggestion.id} {suggestion.name}{" "}
-                  <img src={suggestion.official_artwork} />
+                  <img
+                    src={suggestion.official_artwork}
+                    style={{ height: "10vh" }}
+                  />
                 </li>
               ))}
             </ul>
@@ -100,5 +106,3 @@ const NewPokedexEntry = ({ onAdd }) => {
 };
 
 export default NewPokedexEntry;
-
-

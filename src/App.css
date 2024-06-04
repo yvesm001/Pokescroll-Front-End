@@ -98,7 +98,7 @@ body {
 /* //////////// */
 /* New Pokedex Entry */
 
-.new-pokedex-entry {
+/* .new-pokedex-entry {
   position: relative;
   width: 300px;
 }
@@ -111,13 +111,12 @@ body {
 
 .new-pokedex-entry button {
   margin-top: 8px;
-}
+/* }  */
 
 .suggestions-list {
   top: 100%;
   width: 100%;
   background: white;
-  border: 1px solid #ccc;
   border-top: none;
   z-index: 1000;
   list-style-type: none;
@@ -126,16 +125,16 @@ body {
 }
 
 .suggestions-list li {
-  padding: 8px;
+  /* padding: 8px; */
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  list-style-type: none;
 }
 
 .suggestions-list li:hover {
   background-color: #ecdcc5;
 }
-
 
 /* MY PARTY*/
 .pokemon-entry {
