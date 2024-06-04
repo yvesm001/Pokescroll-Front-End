@@ -1,18 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div>
-      <h1
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        This is the Footer
-      </h1>
-    </div>
+    <footer className="py-3 my-4 " style={{ color: "white" }}>
+      <ul className="nav justify-content-center border-botton pd-3 mb-3">
+        <Link to="/" className="nav-link px-2 text-muted">
+          Home
+        </Link>
+        <Link to="/About" className="nav-link px-2 text-muted">
+          About Us
+        </Link>
+        <Link
+          to="https://github.com/yvesm001/react-project-2-front"
+          className="nav-link px-2 text-muted"
+        >
+          GitHub
+        </Link>
+      </ul>
+      <h5 className="text-center text-muted">© 2024 Company, Inc</h5>
+    </footer>
   );
 }
 
