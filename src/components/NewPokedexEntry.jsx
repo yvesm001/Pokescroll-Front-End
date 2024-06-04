@@ -1,28 +1,102 @@
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "../App.css";
 
-function NewPokedexEntry() {
+const NewPokedexEntry = ({ onAdd }) => {
+  const [name, setName] = useState("");
+  const [error, setError] = useState(null);
+  const [pokemonData, setPokemonData] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemonData = async () => {
+      try {
+        const response = await axios.get(
+          "https://pokemon-data.adaptable.app/pokemon"
+        );
+        setPokemonData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPokemonData();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const matchedPokemon = pokemonData.find(
+        (pokemon) => pokemon.name.toLowerCase() === name.toLowerCase()
+      );
+
+      if (matchedPokemon) {
+        const postResponse = await axios.post(
+          "https://pokemon-data.adaptable.app/pokedex",
+          matchedPokemon
+        );
+        onAdd(postResponse.data);
+        setName("");
+        setSuggestions([]);
+      } else {
+        setError("No matching Pokémon found.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setName(value);
+
+    if (value) {
+      const filteredSuggestions = pokemonData.filter((pokemon) =>
+        pokemon.name.toLowerCase().startsWith(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setName(suggestion.name);
+    setSuggestions([]);
+  };
+
   return (
-    <Form>
-      <Form.Group className="mb-3">
-        <Form.Label>Pokemon Name</Form.Label>
-        <Form.Control type="email" placeholder="Name" />
-      </Form.Group>
-
-      {/* <Form.Group className="mb-3">
-        <Form.Label>Encounter Area</Form.Label>
-        <Form.Select/>
-      </Form.Group> */}
-
-      <Form.Group className="mb-3">
-        <Form.Check type="checkbox" label="Caught?" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Add New Entry
-      </Button>
-    </Form>
+    <div className="new-pokedex-entry">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter Pokémon name"
+          value={name}
+          onChange={handleInputChange}
+          required
+        />
+        <button type="submit">
+          Click to Add
+          {suggestions.length > 0 && (
+            <ul className="suggestions-list">
+              {suggestions.map((suggestion, index) => (
+                <li
+                  key={index}
+                  onClick={() => handleSuggestionClick(suggestion)}
+                >
+                  #{suggestion.id} {suggestion.name}{" "}
+                  <img src={suggestion.official_artwork} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </button>
+      </form>
+      {error && <p>{error}</p>}
+    </div>
   );
-}
+};
 
 export default NewPokedexEntry;
