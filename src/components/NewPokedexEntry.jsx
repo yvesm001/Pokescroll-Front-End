@@ -100,3 +100,5 @@ const NewPokedexEntry = ({ onAdd }) => {
 };
 
 export default NewPokedexEntry;
+
+

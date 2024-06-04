@@ -135,3 +135,41 @@ body {
 .suggestions-list li:hover {
   background-color: #ecdcc5;
 }
+
+
+/* MY PARTY*/
+.pokemon-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-name {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.pokemon-image {
+  max-width: 150px;
+  height: auto;
+}
+
+.move-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.move {
+  list-style-type: none;
+  text-align: left;
+}

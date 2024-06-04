@@ -9,6 +9,7 @@ import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <div className="App">
