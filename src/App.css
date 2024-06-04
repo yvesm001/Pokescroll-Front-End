@@ -172,3 +172,8 @@ body {
   list-style-type: none;
   text-align: left;
 }
+
+/* Pokeball that is next to each party pokemon */
+.party-ball {
+  width: 75px;
+}
