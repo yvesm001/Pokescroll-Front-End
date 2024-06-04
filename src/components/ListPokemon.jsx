@@ -32,7 +32,7 @@ export default function ListPokemon() {
           </div>
         ))
       ) : (
-        <p>Catching 'em all...</p>
+        <h1>Catching 'em all...</h1>
       )}
     </div>
   );
