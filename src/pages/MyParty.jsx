@@ -10,6 +10,11 @@ function MyParty() {
   const [selectedMoves, setSelectedMoves] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
+  const playNotification = () => {
+    const audio = new Audio("/pokemonSound.wav");
+    audio.play();
+  };
+
   const getParty = async () => {
     try {
       const response = await axios.get(
@@ -27,6 +32,7 @@ function MyParty() {
         `https://pokemon-data.adaptable.app/party/${pokemonId}`,
         { name: newName }
       );
+      playNotification();
       setParty((prevParty) =>
         prevParty.map((p) => (p.id === pokemonId ? { ...p, name: newName } : p))
       );
@@ -41,6 +47,7 @@ function MyParty() {
         `https://pokemon-data.adaptable.app/party/${pokemonId}`,
         { selected_moves: newMoves }
       );
+      playNotification();
       setParty((prevParty) =>
         prevParty.map((p) =>
           p.id === pokemonId ? { ...p, selected_moves: newMoves } : p
@@ -57,6 +64,7 @@ function MyParty() {
         `https://pokemon-data.adaptable.app/party/${pokemonId}`
       );
       setParty((prevParty) => prevParty.filter((p) => p.id !== pokemonId));
+      playNotification();
     } catch (error) {
       console.log(error);
     }
@@ -130,9 +138,12 @@ function MyParty() {
                       value={editName}
                       onChange={(e) => setEditName(e.target.value)}
                       className="pokemon-name-input"
+                      style={{ marginTop: "10px" }}
                     />
                   ) : (
-                    <h3 className="pokemon-name">{pokemon.name}</h3>
+                    <h3 className="pokemon-name" style={{ marginTop: "10px" }}>
+                      {pokemon.name}
+                    </h3>
                   )}
                   <img
                     src={pokemon.official_artwork}
@@ -228,7 +239,17 @@ function MyParty() {
             </li>
           ))
         ) : (
-          <p>No Pokémon in party</p>
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "20vw",
+              marginTop: "10px",
+            }}
+          >
+            No Pokémon in party
+          </p>
         )}
       </ul>
     </div>

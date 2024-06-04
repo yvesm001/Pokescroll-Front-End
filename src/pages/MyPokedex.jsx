@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Modal from "react-modal";
 import NewPokedexEntry from "../components/NewPokedexEntry";
 import PokemonCard from "../components/PokemonCard";
+import { useNavigate } from "react-router-dom";
 
 const MyPokedex = () => {
   const [pokemon, setPokemon] = useState([]);
   const [party, setParty] = useState([]);
   const [messages, setMessages] = useState({});
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
 
+  const playNotification = () => {
+    const audio = new Audio("/pokemonSound.wav");
+    audio.play();
+  };
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -45,6 +55,7 @@ const MyPokedex = () => {
       setPokemon((prevPokemon) =>
         prevPokemon.filter((pokemon) => pokemon.id !== id)
       );
+      playNotification();
     } catch (error) {
       console.log(error);
     }
@@ -61,15 +72,17 @@ const MyPokedex = () => {
     }
 
     try {
+      // Used date here so that each entry is unique even if you are adding the same pokemon twice
+      const newPokemon = { ...pokemon, id: `${pokemon.id}-${Date.now()}` };
       const response = await axios.post(
         "https://pokemon-data.adaptable.app/party",
-        pokemon
+        newPokemon
       );
       setParty((prevParty) => [...prevParty, response.data]);
-      setMessages((prevMessages) => ({
-        ...prevMessages,
-        [pokemon.id]: `${pokemon.name} was added to your party!`,
-      }));
+      setModalMessage(`${pokemon.name} was added to your party!`);
+      setIsError(false);
+      setModalIsOpen(true);
+      playNotification();
       setTimeout(() => {
         setMessages((prevMessages) => ({
           ...prevMessages,
@@ -79,6 +92,10 @@ const MyPokedex = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
   };
 
   return (
@@ -98,9 +115,6 @@ const MyPokedex = () => {
         {pokemon.length ? (
           pokemon.map((pokemon) => (
             <div key={pokemon.id}>
-              {messages[pokemon.id] && (
-                <div className="message">{messages[pokemon.id]}</div>
-              )}
               <PokemonCard pokemon={pokemon} />
               <div className="d-flex justify-content-center gap-1">
                 <button onClick={() => handleDeletePokemon(pokemon.id)}>
@@ -116,6 +130,27 @@ const MyPokedex = () => {
           <p>No Pokédex entries</p>
         )}
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className={`Modal ${isError ? "error-modal" : "success-modal"}`}
+        overlayClassName="Overlay"
+      >
+        <img
+          className="party-ball"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1200px-Pok%C3%A9_Ball_icon.svg.png"
+          alt="Poké Ball"
+        />
+        <h2>{isError ? "Error" : "Success"}</h2>
+        <p>{modalMessage}</p>
+        {isError && (
+          <div className="d-flex justify-content-evenly">
+            <button onClick={closeModal}>Close</button>
+            <button onClick={() => navigate("/MyParty")}>Go to Party</button>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };
