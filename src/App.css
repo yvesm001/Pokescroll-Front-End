@@ -1,5 +1,5 @@
 body {
-  background-color: #eee5d7 !important;
+  background-color: #ccf5f3 !important;
   font-family: "Pixelify Sans", sans-serif !important;
 }
 /* Pokemon Type by Color */
@@ -94,10 +94,6 @@ body {
   justify-content: center !important;
   align-items: center !important;
 }
-
-
-
-
 
 /* //////////// */
 /* New Pokedex Entry */

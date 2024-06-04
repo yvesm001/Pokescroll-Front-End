@@ -9,7 +9,10 @@ export default function PokemonCard({ pokemon }) {
         className="text-decoration-none"
         to={"/PokemonDetails/" + pokemon.id}
       >
-        <div className="card" style={{ width: "18rem" }}>
+        <div
+          className="card"
+          style={{ width: "18rem", border: "4px solid #413016" }}
+        >
           <img
             to={"/PokemonDetails/:pokemonId"}
             src={pokemon.official_artwork}
