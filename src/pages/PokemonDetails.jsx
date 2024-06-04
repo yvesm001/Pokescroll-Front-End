@@ -97,6 +97,7 @@ function PokemonDetails() {
               })}
             </h6>
             <br></br>
+            <p>Cry:</p>
             <audio
               style={{ marginBottom: "10px" }}
               controls
@@ -106,30 +107,24 @@ function PokemonDetails() {
             <div className="btnDetails">
               <button
                 onClick={() => {
-                  navigate("/");
+                  currentPokemon.id != 1
+                    ? navigate(`/PokemonDetails/${currentPokemon.id - 1}`)
+                    : navigate(`/PokemonDetails/151`);
                 }}
               >
                 {" "}
-                Back to Home{" "}
+                Previous Pokemon{" "}
               </button>
 
               <button
                 onClick={() => {
-                  navigate(`/PokemonDetails/${currentPokemon.id + 1}`);
+                  currentPokemon.id != 151
+                    ? navigate(`/PokemonDetails/${currentPokemon.id + 1}`)
+                    : navigate(`/PokemonDetails/1`);
                 }}
               >
                 {" "}
                 Next Pokemon
-              </button>
-
-              <button
-                onClick={() => {
-                  console.log(currentPokemon.name);
-                }}
-                type="button"
-                data-id={currentPokemon.id}
-              >
-                Add to Party{" "}
               </button>
             </div>
           </div>
