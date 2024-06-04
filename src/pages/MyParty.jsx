@@ -20,6 +20,25 @@ function MyParty() {
     getParty();
   }, []);
 
+  const handleDeletePokemon = async (id) => {
+    try {
+      await axios.delete(`https://pokemon-data.adaptable.app/party/${id}`);
+      setParty((prevPokemon) =>
+        prevPokemon.filter((pokemon) => pokemon.id !== id)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const handleEditPokemon = async (id) => {
+  //   try {
+  //     await axios.
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
   return (
     <div>
       <h1>My Party Page</h1>
@@ -44,6 +63,12 @@ function MyParty() {
                     </li>
                   ))}
                 </ul>
+                <div className="d-flex flex-column gap-1">
+                  <button>Edit</button>
+                  <button onClick={() => handleDeletePokemon(pokemon.id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </li>
           ))

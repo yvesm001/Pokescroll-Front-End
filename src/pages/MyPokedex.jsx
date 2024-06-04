@@ -56,13 +56,16 @@ const MyPokedex = () => {
         {pokemon.length ? (
           pokemon.map((pokemon) => (
             <div key={pokemon.id}>
+            
               <PokemonCard pokemon={pokemon} />
+              <div className="d-flex justify-content-center gap-1">
               <button onClick={() => handleDeletePokemon(pokemon.id)}>
                 Delete
               </button>
               <button onClick={() => handleAddToParty(pokemon)}>
                 Add to Party
               </button>
+              </div>
             </div>
           ))
         ) : (
