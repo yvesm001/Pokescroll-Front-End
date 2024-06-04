@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 function MyParty() {
   const [party, setParty] = useState(null);
