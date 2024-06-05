@@ -11,7 +11,11 @@ export default function PokedexCard({ pokemon }) {
       >
         <div
           className="card"
-          style={{ width: "18rem", border: "4px solid #413016" }}
+          style={{
+            width: "18rem",
+            border: "4px solid #413016",
+            backgroundColor: "#ecdcc5",
+          }}
         >
           <img
             to={"/PokemonDetails/:pokemonId"}
