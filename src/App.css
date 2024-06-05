@@ -67,6 +67,9 @@ body {
 #dragon {
   background-color: #438a94 !important;
 }
+#ghost {
+  background-color: #32326a !important;
+}
 /* //////////// */
 
 /* Logo */
@@ -91,8 +94,9 @@ body {
 .card-body {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
   align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* //////////// */
@@ -102,12 +106,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
-/* .new-pokedex-entry input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-} */
 
 .new-pokedex-entry button {
   margin-left: 10px;
