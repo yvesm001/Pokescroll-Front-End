@@ -77,16 +77,18 @@ function PokedexDetails() {
 
       {currentPokemon ? (
         <div
-          className="card"
+          className=" card pokemon-entry"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            flexDirection: "column",
             margin: "auto",
             padding: "0",
             width: "25vw",
             height: "auto",
             border: "4px solid #413016",
+            backgroundColor: "#ecdcc5",
           }}
         >
           <img
