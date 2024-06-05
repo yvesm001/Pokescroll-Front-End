@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import NewPokedexEntry from "../components/NewPokedexEntry";
 import PokemonCard from "../components/PokemonCard";
 import { useNavigate } from "react-router-dom";
+import PokedexCard from "../components/PokedexCard";
 
 const MyPokedex = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -116,7 +117,7 @@ const MyPokedex = () => {
         {pokemon.length ? (
           pokemon.map((pokemon) => (
             <div key={pokemon.id}>
-              <PokemonCard pokemon={pokemon} />
+              <PokedexCard pokemon={pokemon} />
               <div className="d-flex justify-content-center gap-1">
                 <button onClick={() => handleDeletePokemon(pokemon.id)}>
                   Delete

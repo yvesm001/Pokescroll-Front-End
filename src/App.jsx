@@ -8,6 +8,7 @@ import PokemonDetails from "./pages/PokemonDetails";
 import ErrorPage from "./pages/ErrorPage";
 import AboutPage from "./pages/AboutPage";
 import Footer from "./components/Footer";
+import PokedexDetails from "./pages/PokedexDetails";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/PokemonDetails/:pokemonId" element={<PokemonDetails />} />
         <Route path="/MyParty" element={<MyParty />} />
         <Route path="/About" element={<AboutPage />} />
+        <Route path="/PokedexDetails/:pokemonId" element={<PokedexDetails />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
