@@ -52,10 +52,15 @@ function PokemonDetails() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            margin: "auto",
+            padding: "0",
+            width: "25vw",
+            height: "auto",
+            border: "4px solid #413016",
           }}
         >
           <img
-            style={{ width: "15rem" }}
+            style={{ width: "12rem" }}
             src={currentPokemon.official_artwork}
           />
           <div className="card-body">
@@ -89,8 +94,7 @@ function PokemonDetails() {
             </span>
             <h6>Heigth: {currentPokemon.height} m</h6>
             <h6>Weigth: {currentPokemon.weight} kg</h6>
-            <h6>{currentPokemon.description}</h6>
-            <br></br>
+            <h6 style={{ margin: "5px" }}>{currentPokemon.description}</h6>
             <h6>
               {" "}
               Where to encounter:
@@ -102,21 +106,25 @@ function PokemonDetails() {
                 );
               })}
             </h6>
-            <br></br>
-            <p>Cry:</p>
+            <p style={{ marginBottom: "2px" }}>Cry:</p>
             <audio
-              style={{ marginBottom: "10px" }}
+              style={{
+                border: "2px solid #413016",
+                borderRadius: "21px",
+                height: "30px",
+                marginBottom: "10px",
+              }}
               controls
               src={currentPokemon.sound}
             />
-            <br></br>
-            <div className="btnDetails">
+            <div className="btnDetails" style={{ marginBottom: "15px" }}>
               <button
                 onClick={() => {
                   currentPokemon.id != 1
                     ? navigate(`/PokemonDetails/${currentPokemon.id - 1}`)
                     : navigate(`/PokemonDetails/151`);
                 }}
+                style={{ marginRight: "20px" }}
               >
                 {" "}
                 Previous Pokemon{" "}
