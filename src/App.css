@@ -248,3 +248,23 @@ body {
     width: 50%;
   }
 }
+
+.pokeball-error {
+  width: 200px;
+  padding-right: 8px;
+}
+
+.error-header {
+  font-size: 200px;
+  color: #000;
+}
+
+.pokeball-error {
+  width: 200px;
+  padding-right: 8px;
+}
+
+.error-header {
+  font-size: 200px;
+  color: #000;
+}
