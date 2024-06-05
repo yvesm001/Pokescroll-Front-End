@@ -18,6 +18,7 @@ export default function PokemonCard({ pokemon }) {
           }}
         >
           <img
+            className="pokemonImg"
             to={"/PokemonDetails/:pokemonId"}
             src={pokemon.official_artwork}
           />
