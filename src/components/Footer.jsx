@@ -11,6 +11,9 @@ function Footer() {
         <Link to="/About" className="nav-link px-2 text-muted">
           About Us
         </Link>
+        <Link to="/MyParty" className="nav-link px-2 text-muted">
+          My Party
+        </Link>
         <Link
           to="https://github.com/yvesm001/react-project-2-front"
           className="nav-link px-2 text-muted"
