@@ -1,11 +1,8 @@
-// THIS COMPONENT RETRIEVES ALL POKEMON FROM THE DATA AND CONDITIONALLY RENDERS A POKEMONCARD COMPONENT FOR EACH
-
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import axios from "axios";
 
-export default function ListPokemon() {
+export default function ListPokemon({ searchQuery }) {
   const [pokemon, setPokemon] = useState(null);
 
   const API_URL = "https://pokemon-data.adaptable.app/pokemon";
@@ -23,10 +20,16 @@ export default function ListPokemon() {
     getAllPokemon();
   }, []);
 
+  const filteredPokemon = pokemon
+    ? pokemon.filter((p) =>
+        p.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+      )
+    : [];
+
   return (
     <div className="pokemonList">
       {pokemon ? (
-        pokemon.map((pokemon) => (
+        filteredPokemon.map((pokemon) => (
           <div key={pokemon.id}>
             <PokemonCard pokemon={pokemon} />
           </div>

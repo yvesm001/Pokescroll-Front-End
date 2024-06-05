@@ -18,6 +18,7 @@ const MyPokedex = () => {
     const audio = new Audio("/pokemonSound.wav");
     audio.play();
   };
+
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -63,16 +64,16 @@ const MyPokedex = () => {
 
   const handleAddToParty = async (pokemon) => {
     if (party.length >= 6) {
-      setMessages((prevMessages) => ({
-        ...prevMessages,
-        [pokemon.id]:
-          "Your party is full! Remove a Pokémon before adding another.",
-      }));
+      setModalMessage(
+        "Your party is full! Remove a Pokémon before adding another."
+      );
+      setIsError(true);
+      playNotification();
+      setModalIsOpen(true);
       return;
     }
 
     try {
-      // Used date here so that each entry is unique even if you are adding the same pokemon twice
       const newPokemon = { ...pokemon, id: `${pokemon.id}-${Date.now()}` };
       const response = await axios.post(
         "https://pokemon-data.adaptable.app/party",
@@ -88,7 +89,7 @@ const MyPokedex = () => {
           ...prevMessages,
           [pokemon.id]: "",
         }));
-      }, 3000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
