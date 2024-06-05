@@ -11,6 +11,7 @@ function AboutPage() {
         alignItems: "center",
         flexDirection: "column",
         marginTop: "3rem",
+        backgroundColor: "#ecdcc5",
       }}
     >
       <h1>About Us</h1>

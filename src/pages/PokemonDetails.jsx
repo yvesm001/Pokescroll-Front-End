@@ -47,16 +47,18 @@ function PokemonDetails() {
 
       {currentPokemon ? (
         <div
-          className="card"
+          className=" card pokemon-entry"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            flexDirection: "column",
             margin: "auto",
             padding: "0",
             width: "25vw",
             height: "auto",
             border: "4px solid #413016",
+            backgroundColor: "#ecdcc5",
           }}
         >
           <img
@@ -94,7 +96,15 @@ function PokemonDetails() {
             </span>
             <h6>Heigth: {currentPokemon.height} m</h6>
             <h6>Weigth: {currentPokemon.weight} kg</h6>
-            <h6 style={{ margin: "5px" }}>{currentPokemon.description}</h6>
+            <h6
+              style={{
+                margin: "10px",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              {currentPokemon.description}
+            </h6>
             <h6>
               {" "}
               Where to encounter:

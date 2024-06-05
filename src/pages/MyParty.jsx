@@ -122,7 +122,7 @@ function MyParty() {
             <li key={pokemon.id} className="list-group-item rounded">
               <div
                 className="pokemon-entry"
-                style={{ border: "2px solid #413016" }}
+                style={{ border: "2px solid #413016", margin: "20px" }}
               >
                 <div className="d-flex align-items-center">
                   <h1>{index + 1}</h1>
@@ -149,6 +149,7 @@ function MyParty() {
                     src={pokemon.official_artwork}
                     alt={pokemon.name}
                     className="pokemon-image"
+                    style={{ marginBottom: "15px" }}
                   />
                 </div>
                 <ul className="move-list">
@@ -192,7 +193,7 @@ function MyParty() {
                     ))
                   )}
                 </ul>
-                <div className="d-flex flex-column gap-2">
+                <div className=" btnParty d-flex flex-column gap-2">
                   {editMode === pokemon.id ? (
                     <button
                       onClick={() => {
