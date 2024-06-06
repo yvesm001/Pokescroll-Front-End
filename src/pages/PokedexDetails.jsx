@@ -125,7 +125,15 @@ function PokedexDetails() {
             </span>
             <h6>Height: {currentPokemon.height} m</h6>
             <h6>Weight: {currentPokemon.weight} kg</h6>
-            <h6 style={{ margin: "5px" }}>{currentPokemon.description}</h6>
+            <h6
+              style={{
+                margin: "10px",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              {currentPokemon.description}
+            </h6>
             <h6>
               Where to encounter:
               {currentPokemon.encounter_areas.map((area) => (
