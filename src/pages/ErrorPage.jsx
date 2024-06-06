@@ -9,10 +9,18 @@ function errorPage() {
 
   return (
     <div className="errorPage">
-      <h1 className="error-header d-flex align-items-center justify-content-center">
-        4<img className="pokeball-error " src={imgURL} alt="404 error gif" />4
+      <h1
+        className="error-header d-flex align-items-center justify-content-center"
+        style={{ fontSize: "10rem" }}
+      >
+        4<img className="pokeball-error" src={imgURL} alt="404 error gif" />4
       </h1>
-      <h2 className="d-flex justify-content-center mb-4">Page Not Found</h2>
+      <h2
+        style={{ fontSize: "3rem" }}
+        className="d-flex justify-content-center mb-4"
+      >
+        Page Not Found
+      </h2>
 
       <div className="d-flex justify-content-center">
         <button
