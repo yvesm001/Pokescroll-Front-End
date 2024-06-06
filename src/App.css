@@ -1,6 +1,7 @@
 body {
   background-color: #ccf5f3 !important;
   font-family: "Pixelify Sans", sans-serif !important;
+  padding-top: 90px;
 }
 /* Pokemon Type by Color */
 #fire {
