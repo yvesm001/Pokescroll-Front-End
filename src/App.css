@@ -210,6 +210,14 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.errorPage {
+  margin: 8%;
+  font-size: 1.5rem;
+}
+.pokeball-error {
+  width: 10vw !important;
+}
 /* Media Querys */
 
 @media (max-width: 1000px) {
