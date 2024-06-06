@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-dark bg-dark"
+      className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"
       style={{ padding: "20px" }}
     >
       <NavLink className="navbar-brand" to="/">
