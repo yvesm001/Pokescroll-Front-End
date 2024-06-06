@@ -253,12 +253,4 @@ body {
   }
 }
 
-.navbar-collapse {
-  overflow: hidden !important;
-  transition: max-height 1s ease-in-out !important;
-  max-height: 0 !important;
-}
 
-.navbar-collapse.show {
-  max-height: 1000px !important; 
-}
