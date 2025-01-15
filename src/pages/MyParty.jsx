@@ -18,7 +18,7 @@ function MyParty() {
   const getParty = async () => {
     try {
       const response = await axios.get(
-        "https://pokemon-data.adaptable.app/party"
+        "https://pokescroll-data.onrender.com/party"
       );
       setParty(response.data);
     } catch (error) {
@@ -29,7 +29,7 @@ function MyParty() {
   const handleEditName = async (pokemonId, newName) => {
     try {
       await axios.patch(
-        `https://pokemon-data.adaptable.app/party/${pokemonId}`,
+        `https://pokescroll-data.onrender.com/party/${pokemonId}`,
         { name: newName }
       );
       playNotification();
@@ -44,7 +44,7 @@ function MyParty() {
   const handleEditMoves = async (pokemonId, newMoves) => {
     try {
       await axios.patch(
-        `https://pokemon-data.adaptable.app/party/${pokemonId}`,
+        `https://pokescroll-data.onrender.com/party/${pokemonId}`,
         { selected_moves: newMoves }
       );
       playNotification();
@@ -61,7 +61,7 @@ function MyParty() {
   const handleDelete = async (pokemonId) => {
     try {
       await axios.delete(
-        `https://pokemon-data.adaptable.app/party/${pokemonId}`
+        `https://pokescroll-data.onrender.com/party/${pokemonId}`
       );
       setParty((prevParty) => prevParty.filter((p) => p.id !== pokemonId));
       playNotification();

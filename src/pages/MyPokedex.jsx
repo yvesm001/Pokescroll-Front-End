@@ -16,7 +16,7 @@ const MyPokedex = () => {
   const navigate = useNavigate();
 
   const playNotification = () => {
-    const audio = new Audio("/pokemonSound.wav");
+    const audio = new Audio("/pokemonSound.mp3");
     audio.play();
   };
 
@@ -24,7 +24,7 @@ const MyPokedex = () => {
     const fetchPokemon = async () => {
       try {
         const response = await axios.get(
-          "https://pokemon-data.adaptable.app/pokedex"
+          "https://pokescroll-data.onrender.com/pokedex"
         );
         setPokemon(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ const MyPokedex = () => {
     const fetchParty = async () => {
       try {
         const response = await axios.get(
-          "https://pokemon-data.adaptable.app/party"
+          "https://pokescroll-data.onrender.com/party"
         );
         setParty(response.data);
       } catch (error) {
@@ -53,21 +53,26 @@ const MyPokedex = () => {
 
   const handleDeletePokemon = async (id) => {
     try {
-      await axios.delete(`https://pokemon-data.adaptable.app/pokedex/${id}`);
-      setPokemon((prevPokemon) =>
-        prevPokemon.filter((pokemon) => pokemon.id !== id)
+      const response = await axios.delete(
+        `https://pokescroll-data.onrender.com/pokedex/${id}`
       );
-      playNotification();
+      if (response.status === 200) {
+        setPokemon((prevPokemon) =>
+          prevPokemon.filter((pokemon) => pokemon.id !== id)
+        );
+        playNotification();
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error al eliminar el Pokémon:", error);
     }
   };
 
   const handleAddToParty = async (pokemon) => {
-    if (party.length >= 6) {
+    if (Array.isArray(party) && party.length >= 6) {
       setModalMessage(
         "Your party is full! Remove a Pokémon before adding another."
       );
+      setModalMessage("An error occurred. Please try again.");
       setIsError(true);
       playNotification();
       setModalIsOpen(true);
@@ -77,7 +82,7 @@ const MyPokedex = () => {
     try {
       const newPokemon = { ...pokemon, id: `${pokemon.id}-${Date.now()}` };
       const response = await axios.post(
-        "https://pokemon-data.adaptable.app/party",
+        "https://pokescroll-data.onrender.com/party",
         newPokemon
       );
       setParty((prevParty) => [...prevParty, response.data]);

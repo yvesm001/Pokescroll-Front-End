@@ -5,11 +5,12 @@ import axios from "axios";
 export default function ListPokemon({ searchQuery }) {
   const [pokemon, setPokemon] = useState(null);
 
-  const API_URL = "https://pokemon-data.adaptable.app/pokemon";
+  const API_URL = "https://pokescroll-data.onrender.com/pokemon";
 
   const getAllPokemon = async () => {
     try {
       const response = await axios.get(API_URL);
+      console.log("This is our server response+++++_>", response);
       setPokemon(response.data);
     } catch (error) {
       console.log(error);

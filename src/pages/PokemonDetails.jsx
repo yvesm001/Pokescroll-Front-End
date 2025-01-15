@@ -7,13 +7,13 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function PokemonDetails() {
-  const API_URL = "https://pokemon-data.adaptable.app/pokemon";
+  const API_URL = "https://pokescroll-data.onrender.com/pokemon";
 
   const { pokemonId } = useParams();
   const [currentPokemon, setCurrentPokemon] = useState(null);
 
   const playNotification = () => {
-    const audio = new Audio("/pokemonSound.wav");
+    const audio = new Audio("/pokemonSound.mp3");
     audio.play();
   };
 
