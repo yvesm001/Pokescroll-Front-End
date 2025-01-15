@@ -21,7 +21,7 @@ function Footer() {
           GitHub
         </Link>
       </ul>
-      <h5 className="text-center text-muted">© 2024 Company, Inc</h5>
+      <h5 className="text-center text-muted">© 2024 Victor M Ortiz Martinez</h5>
     </footer>
   );
 }

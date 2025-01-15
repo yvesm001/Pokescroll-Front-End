@@ -9,7 +9,7 @@ const NewPokedexEntry = ({ onAdd }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const playNotification = () => {
-    const audio = new Audio("/pokemonSound.wav");
+    const audio = new Audio("/pokemonSound.mp3");
     audio.play();
   };
 
@@ -17,8 +17,9 @@ const NewPokedexEntry = ({ onAdd }) => {
     const fetchPokemonData = async () => {
       try {
         const response = await axios.get(
-          "https://pokemon-data.adaptable.app/pokemon"
+          "https://pokescroll-data.onrender.com/pokemon"
         );
+        console.log("This is our response++++++++>", response);
         setPokemonData(response.data);
       } catch (error) {
         console.log(error);
@@ -39,7 +40,7 @@ const NewPokedexEntry = ({ onAdd }) => {
       playNotification();
       if (matchedPokemon) {
         const postResponse = await axios.post(
-          "https://pokemon-data.adaptable.app/pokedex",
+          "https://pokescroll-data.onrender.com/pokedex",
           matchedPokemon
         );
         onAdd(postResponse.data);
@@ -49,7 +50,7 @@ const NewPokedexEntry = ({ onAdd }) => {
         setError("No matching Pokémon found.");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
